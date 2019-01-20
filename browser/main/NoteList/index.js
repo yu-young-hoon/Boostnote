@@ -1082,9 +1082,9 @@ class NoteList extends React.Component {
               value={sortBy}
               onChange={(e) => this.handleSortByChange(e)}
             >
+              <option title='Sort alphabetically' value='ALPHABETICAL'>{i18n.__('Alphabetically')}</option>
               <option title='Sort by update time' value='UPDATED_AT'>{i18n.__('Updated')}</option>
               <option title='Sort by create time' value='CREATED_AT'>{i18n.__('Created')}</option>
-              <option title='Sort alphabetically' value='ALPHABETICAL'>{i18n.__('Alphabetically')}</option>
             </select>
           </div>
           <div styleName='control-button-area'>

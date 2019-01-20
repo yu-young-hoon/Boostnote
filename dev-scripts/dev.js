@@ -49,7 +49,7 @@ function startServer () {
 }
 
 function startElectron () {
-  spawn(electron, ['--hot', './index.js'], { stdio: 'inherit' })
+  spawn(electron, ['--hot', '--remote-debugging-port=1234', './index.js'], { stdio: 'inherit' })
     .on('close', () => {
       server.close()
     })

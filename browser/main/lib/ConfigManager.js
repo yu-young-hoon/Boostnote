@@ -17,7 +17,7 @@ export const DEFAULT_CONFIG = {
   listWidth: 280,
   navWidth: 200,
   sortBy: {
-    default: 'UPDATED_AT' // 'CREATED_AT', 'UPDATED_AT', 'APLHABETICAL'
+    default: 'ALPHABETICAL' // 'CREATED_AT', 'UPDATED_AT', 'ALPHABETICAL'
   },
   sortTagsBy: 'ALPHABETICAL', // 'ALPHABETICAL', 'COUNTER'
   listStyle: 'DEFAULT', // 'DEFAULT', 'SMALL'

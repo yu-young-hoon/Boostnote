@@ -80,6 +80,9 @@ class UiTab extends React.Component {
           ? this.refs.uiD2w.checked
           : false
       },
+      sortBy: {
+        default: this.refs.defaultSort.value
+      },
       editor: {
         theme: this.refs.editorTheme.value,
         fontSize: this.refs.editorFontSize.value,
@@ -131,8 +134,8 @@ class UiTab extends React.Component {
       checkHighLight.setAttribute('href', `../node_modules/codemirror/theme/${newCodemirrorTheme.split(' ')[0]}.css`)
     }
     this.setState({ config: newConfig, codemirrorTheme: newCodemirrorTheme }, () => {
-      const {ui, editor, preview} = this.props.config
-      this.currentConfig = {ui, editor, preview}
+      const {ui, sortBy, editor, preview} = this.props.config
+      this.currentConfig = {ui, sortBy, editor, preview}
       if (_.isEqual(this.currentConfig, this.state.config)) {
         this.props.haveToSave()
       } else {
@@ -148,6 +151,7 @@ class UiTab extends React.Component {
   handleSaveUIClick (e) {
     const newConfig = {
       ui: this.state.config.ui,
+      sortBy: this.state.config.sortBy,
       editor: this.state.config.editor,
       preview: this.state.config.preview
     }
@@ -219,6 +223,22 @@ class UiTab extends React.Component {
                 {
                   getLanguages().map((language) => <option value={language.locale} key={language.locale}>{i18n.__(language.name)}</option>)
                 }
+              </select>
+            </div>
+          </div>
+
+          <div styleName='group-section'>
+            <div styleName='group-section-label'>
+              {i18n.__('Default sort')}
+            </div>
+            <div styleName='group-section-control'>
+              <select value={config.sortBy.default}
+                onChange={(e) => this.handleUIChange(e)}
+                ref='defaultSort'
+              >
+                <option title='Sort by update time' value='UPDATED_AT'>{i18n.__('Updated')}</option>
+                <option title='Sort by create time' value='CREATED_AT'>{i18n.__('Created')}</option>
+                <option title='Sort alphabetically' value='ALPHABETICAL'>{i18n.__('Alphabetically')}</option>
               </select>
             </div>
           </div>

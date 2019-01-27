@@ -67,7 +67,6 @@ class UiTab extends React.Component {
       ui: {
         theme: this.refs.uiTheme.value,
         language: this.refs.uiLanguage.value,
-        defaultNote: this.refs.defaultNote.value,
         tagNewNoteWithFilteringTags: this.refs.tagNewNoteWithFilteringTags.checked,
         showCopyNotification: this.refs.showCopyNotification.checked,
         confirmDeletion: this.refs.confirmDeletion.checked,
@@ -81,7 +80,7 @@ class UiTab extends React.Component {
           : false
       },
       sortBy: {
-        default: this.refs.defaultSort.value
+        default: this.refs.defaultNoteSort.value
       },
       editor: {
         theme: this.refs.editorTheme.value,
@@ -229,12 +228,12 @@ class UiTab extends React.Component {
 
           <div styleName='group-section'>
             <div styleName='group-section-label'>
-              {i18n.__('Default sort')}
+              {i18n.__('Default note sort')}
             </div>
             <div styleName='group-section-control'>
               <select value={config.sortBy.default}
                 onChange={(e) => this.handleUIChange(e)}
-                ref='defaultSort'
+                ref='defaultNoteSort'
               >
                 <option title='Sort by update time' value='UPDATED_AT'>{i18n.__('Updated')}</option>
                 <option title='Sort by create time' value='CREATED_AT'>{i18n.__('Created')}</option>

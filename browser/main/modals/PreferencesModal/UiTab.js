@@ -67,6 +67,7 @@ class UiTab extends React.Component {
       ui: {
         theme: this.refs.uiTheme.value,
         language: this.refs.uiLanguage.value,
+        defaultNote: this.refs.defaultNote.value,
         tagNewNoteWithFilteringTags: this.refs.tagNewNoteWithFilteringTags.checked,
         showCopyNotification: this.refs.showCopyNotification.checked,
         confirmDeletion: this.refs.confirmDeletion.checked,

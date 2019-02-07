@@ -8,6 +8,7 @@ import consts from 'browser/lib/consts'
 import ReactCodeMirror from 'react-codemirror'
 import CodeMirror from 'codemirror'
 import 'codemirror-mode-elixir'
+import dataApi from 'browser/main/lib/dataApi'
 import _ from 'lodash'
 import i18n from 'browser/lib/i18n'
 import { getLanguages } from 'browser/lib/Languages'
@@ -149,6 +150,7 @@ class UiTab extends React.Component {
   }
 
   handleSaveUIClick (e) {
+    const { dispatch } = this.props
     const newConfig = {
       ui: this.state.config.ui,
       sortBy: this.state.config.sortBy,
@@ -162,6 +164,16 @@ class UiTab extends React.Component {
       type: 'SET_UI',
       config: newConfig
     })
+
+    // Reload all
+    dataApi.init().then(data => {
+      dispatch({
+        type: 'INIT_ALL',
+        storages: data.storages,
+        notes: data.notes
+      })
+    })
+
     this.clearMessage()
     this.props.haveToSave()
   }

@@ -464,10 +464,10 @@ class NoteList extends React.Component {
   }
 
   handleSortByChange (e) {
-    const { dispatch, params: { folderKey } } = this.props
+    const { dispatch, params: { folderKey, storageKey } } = this.props
 
     const config = {
-      [folderKey]: { sortBy: e.target.value }
+      [folderKey === undefined ? storageKey : folderKey]: { sortBy: e.target.value }
     }
 
     ConfigManager.set(config)
@@ -971,10 +971,10 @@ class NoteList extends React.Component {
   }
 
   render () {
-    const { location, config, params: { folderKey } } = this.props
+    const { location, config, params: { folderKey, storageKey } } = this.props
     let { notes } = this.props
     const { selectedNoteKeys } = this.state
-    const sortBy = _.get(config, [folderKey, 'sortBy'], config.sortBy.default)
+    const sortBy = _.get(config, [folderKey === undefined ? storageKey : folderKey, 'sortBy'], config.sortBy.default)
     const sortFunc = sortBy === 'CREATED_AT'
       ? sortByCreatedAt
       : sortBy === 'ALPHABETICAL'

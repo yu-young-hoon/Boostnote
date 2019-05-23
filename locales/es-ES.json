@@ -18,6 +18,7 @@
 	".md": ".md",
 	".txt": ".txt",
 	".html": ".html",
+	".pdf": ".pdf",
 	"Print": "Imprimir",
 	"Your preferences for Boostnote": "Tus preferencias para Boostnote",
 	"Storage Locations": "Almacenamientos",
@@ -75,7 +76,7 @@
 	"Website": "Página web",
 	"Development": "Desarrollo",
 	" : Development configurations for Boostnote.": " : Configuraciones de desarrollo para Boostnote.",
-	"Copyright (C) 2017 - 2018 BoostIO": "Copyright (C) 2017 - 2018 BoostIO",
+	"Copyright (C) 2017 - 2019 BoostIO": "Copyright (C) 2017 - 2019 BoostIO",
 	"License: GPL v3": "Licencia: GPL v3",
 	"Analytics": "Analítica",
 	"Boostnote collects anonymous data for the sole purpose of improving the application, and strictly does not collect any personal information such the contents of your notes.": "Boostnote recopila datos anónimos con el único propósito de mejorar la aplicación, y de ninguna manera recopila información personal como el contenido de sus notas.",
@@ -133,7 +134,7 @@
 	"Successfully applied!": "¡Aplicado con éxito!",
 	"Albanian": "Albanés",
 	"Chinese (zh-CN)": "Chino - China",
-	"Chinese (zh-TW)": "Chino - Taiwan",
+	"Chinese (zh-TW)": "Chino - Taiwán",
 	"Danish": "Danés",
 	"Japanese": "Japonés",
 	"Korean": "Coreano",
@@ -154,6 +155,8 @@
 	"Allow dangerous html tags": "Permitir etiquetas html peligrosas",
 	"⚠ You have pasted a link referring an attachment that could not be found in the location of this note. Pasting links referring attachments is only supported if the source and destination location is the same storage. Please Drag&Drop the attachment instead! ⚠": "⚠ Ha pegado un enlace a un archivo adjunto que no se puede encontrar en el almacenamiento de esta nota. Pegar enlaces a archivos adjuntos solo está soportado si el origen y el destino son el mismo almacenamiento. ¡Por favor, mejor arrastre el archivo! ⚠",
 	"Convert textual arrows to beautiful signs. ⚠ This will interfere with using HTML comments in your Markdown.": "Convertir flechas textuales a símbolos bonitos. ⚠ Esto interferirá cuando use comentarios HTML en Markdown.",
-  "Disabled": "Disabled",
-   "Snippet Default Language": "Lenguaje por defecto de los fragmentos de código"
+	"Spellcheck disabled": "Deshabilitar corrector ortográfico",
+	"Show menu bar": "Mostrar barra del menú",
+	"Auto Detect": "Detección automática",
+	"Snippet Default Language": "Lenguaje por defecto de los fragmentos de código"
 }

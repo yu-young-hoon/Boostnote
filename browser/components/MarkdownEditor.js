@@ -20,10 +20,10 @@ class MarkdownEditor extends React.Component {
     this.supportMdSelectionBold = [16, 17, 186]
 
     this.state = {
-      status: props.config.editor.switchPreview === 'RIGHTCLICK' ? props.config.editor.delfaultStatus : 'PREVIEW',
+      status: props.config.editor.switchPreview === 'RIGHTCLICK' ? props.config.editor.delfaultStatus : 'CODE',
       renderValue: props.value,
       keyPressed: new Set(),
-      isLocked: false
+      isLocked: props.isLocked
     }
 
     this.lockEditorCode = () => this.handleLockEditor()
@@ -32,6 +32,7 @@ class MarkdownEditor extends React.Component {
   componentDidMount () {
     this.value = this.refs.code.value
     eventEmitter.on('editor:lock', this.lockEditorCode)
+    eventEmitter.on('editor:focus', this.focusEditor.bind(this))
   }
 
   componentDidUpdate () {
@@ -47,6 +48,15 @@ class MarkdownEditor extends React.Component {
   componentWillUnmount () {
     this.cancelQueue()
     eventEmitter.off('editor:lock', this.lockEditorCode)
+    eventEmitter.off('editor:focus', this.focusEditor.bind(this))
+  }
+
+  focusEditor () {
+    this.setState({
+      status: 'CODE'
+    }, () => {
+      this.refs.code.focus()
+    })
   }
 
   queueRendering (value) {
@@ -76,6 +86,7 @@ class MarkdownEditor extends React.Component {
   }
 
   handleContextMenu (e) {
+    if (this.state.isLocked) return
     const { config } = this.props
     if (config.editor.switchPreview === 'RIGHTCLICK') {
       const newStatus = this.state.status === 'PREVIEW' ? 'CODE' : 'PREVIEW'

@@ -26,11 +26,29 @@ const { remote } = require('electron')
 const { dialog } = remote
 const WP_POST_PATH = '/wp/v2/posts'
 
+const regexMatchStartingTitleNumber = new RegExp('^([0-9]*\.?[0-9]+).*$')
+
 function sortByCreatedAt (a, b) {
   return new Date(b.createdAt) - new Date(a.createdAt)
 }
 
 function sortByAlphabetical (a, b) {
+  const matchA = regexMatchStartingTitleNumber.exec(a.title)
+  const matchB = regexMatchStartingTitleNumber.exec(b.title)
+
+  if (matchA && matchA.length === 2 && matchB && matchB.length === 2) {
+    // Both note titles are starting with a float. We will compare it now.
+    const floatA = parseFloat(matchA[1])
+    const floatB = parseFloat(matchB[1])
+
+    const diff = floatA - floatB
+    if (diff !== 0) {
+      return diff
+    }
+
+    // The float values are equal. We will compare the full title.
+  }
+
   return a.title.localeCompare(b.title)
 }
 
@@ -259,13 +277,22 @@ class NoteList extends React.Component {
   }
 
   jumpNoteByHashHandler (event, noteHash) {
+    const { data } = this.props
+
     // first argument event isn't used.
     if (this.notes === null || this.notes.length === 0) {
       return
     }
 
     const selectedNoteKeys = [noteHash]
-    this.focusNote(selectedNoteKeys, noteHash, '/home')
+
+    let locationToSelect = '/home'
+    const noteByHash = data.noteMap.map((note) => note).find(note => note.key === noteHash)
+    if (noteByHash !== undefined) {
+      locationToSelect = '/storages/' + noteByHash.storage + '/folders/' + noteByHash.folder
+    }
+
+    this.focusNote(selectedNoteKeys, noteHash, locationToSelect)
 
     ee.emit('list:moved')
   }
@@ -496,6 +523,7 @@ class NoteList extends React.Component {
       'export-txt': 'Text export',
       'export-md': 'Markdown export',
       'export-html': 'HTML export',
+      'export-pdf': 'PDF export',
       'print': 'Print'
     })[msg]
 
@@ -656,14 +684,18 @@ class NoteList extends React.Component {
         })
       )
       .then((data) => {
-        data.forEach((item) => {
-          dispatch({
-            type: 'DELETE_NOTE',
-            storageKey: item.storageKey,
-            noteKey: item.noteKey
+        const dispatchHandler = () => {
+          data.forEach((item) => {
+            dispatch({
+              type: 'DELETE_NOTE',
+              storageKey: item.storageKey,
+              noteKey: item.noteKey
+            })
           })
-        })
+        }
+        ee.once('list:next', dispatchHandler)
       })
+      .then(() => ee.emit('list:next'))
       .catch((err) => {
         console.error('Cannot Delete note: ' + err)
       })
@@ -687,6 +719,7 @@ class NoteList extends React.Component {
         })
         AwsMobileAnalyticsConfig.recordDynamicCustomEvent('EDIT_NOTE')
       })
+      .then(() => ee.emit('list:next'))
       .catch((err) => {
         console.error('Notes could not go to trash: ' + err)
       })
@@ -711,7 +744,11 @@ class NoteList extends React.Component {
         folder: folder.key,
         title: firstNote.title + ' ' + i18n.__('copy'),
         content: firstNote.content,
-        linesHighlighted: firstNote.linesHighlighted
+        linesHighlighted: firstNote.linesHighlighted,
+        description: firstNote.description,
+        snippets: firstNote.snippets,
+        tags: firstNote.tags,
+        isStarred: firstNote.isStarred
       })
       .then((note) => {
         attachmentManagement.cloneAttachments(firstNote, note)
@@ -876,7 +913,7 @@ class NoteList extends React.Component {
     if (!location.pathname.match(/\/trashed/)) this.addNotesFromFiles(filepaths)
   }
 
-  // Add notes to the current folder
+ // Add notes to the current folder
   addNotesFromFiles (filepaths) {
     const { dispatch, location } = this.props
     const { storage, folder } = this.resolveTargetFolder()
@@ -900,13 +937,20 @@ class NoteList extends React.Component {
           }
           dataApi.createNote(storage.key, newNote)
           .then((note) => {
-            dispatch({
-              type: 'UPDATE_NOTE',
-              note: note
-            })
-            hashHistory.push({
-              pathname: location.pathname,
-              query: {key: getNoteKey(note)}
+            attachmentManagement.importAttachments(note.content, filepath, storage.key, note.key)
+            .then((newcontent) => {
+              note.content = newcontent
+
+              dataApi.updateNote(storage.key, note.key, note)
+
+              dispatch({
+                type: 'UPDATE_NOTE',
+                note: note
+              })
+              hashHistory.push({
+                pathname: location.pathname,
+                query: {key: getNoteKey(note)}
+              })
             })
           })
         })

@@ -19,6 +19,7 @@
 	".md": ".md",
 	".txt": ".txt",
 	".html": ".html",
+	".pdf": ".pdf",
 	"Print": "พิมพ์",
 	"Your preferences for Boostnote": "การตั้งค่าของคุณสำหรับ Boostnote",
 	"Help": "ช่วยเหลือ",
@@ -82,7 +83,7 @@
 	"Website": "เว็บไซต์",
 	"Development": "การพัฒนา",
 	" : Development configurations for Boostnote.": " : การตั้งค่าต่างๆสำหรับการพัฒนา Boostnote.",
-	"Copyright (C) 2017 - 2018 BoostIO": "สงวนลิขสิทธิ์ (C) 2017 - 2018 BoostIO",
+	"Copyright (C) 2017 - 2019 BoostIO": "สงวนลิขสิทธิ์ (C) 2017 - 2019 BoostIO",
 	"License: GPL v3": "License: GPL v3",
 	"Analytics": "การวิเคราะห์",
 	"Boostnote collects anonymous data for the sole purpose of improving the application, and strictly does not collect any personal information such the contents of your notes.": "Boostnote จะเก็บข้อมูลแบบไม่ระบุตัวตนเพื่อนำไปใช้ในการปรับปรุงแอพพลิเคชันเท่านั้น, และจะไม่มีการเก็บข้อมูลส่วนตัวใดๆของคุณ เช่น ข้อมูลในโน๊ตของคุณอย่างเด็ดขาด.",
@@ -178,5 +179,8 @@
 	"Convert textual arrows to beautiful signs. ⚠ This will interfere with using HTML comments in your Markdown.": "แปลงลูกศรจากรูปแบบข้อความให้เป็นสัญลักษณ์. ⚠ สิ่งนี้จะเป็นการแทรกโดยใช้ HTML comment ลงไปใน Markdown ที่คุณเขียน.",
 	"⚠ You have pasted a link referring an attachment that could not be found in the storage location of this note. Pasting links referring attachments is only supported if the source and destination location is the same storage. Please Drag&Drop the attachment instead! ⚠": "⚠ ไม่พบไฟล์แนบในโน๊ตนี้ จากลิงค์ที่คุณได้วาง. คุณสามารถวางลิงค์ที่อ้างอิงไปยังไฟล์แนบ เฉพาะกรณีที่ต้นทาง และปลายทางที่อ้างถึงนั้นอยู่ใน 'แหล่งจัดเก็บ เดียวกัน. กรุณาใช้การลากและวางเพื่อใส่ไฟล์แนบแทน! ⚠",
 	"Enable smart table editor": "เปิดการใช้ Smart table editor",
-	"Snippet Default Language": "ทำการ Snippet ภาษาที่เป็นค่าเริ่มต้น"
+	"Snippet Default Language": "ทำการ Snippet ภาษาที่เป็นค่าเริ่มต้น",
+	"Spellcheck disabled": "Spellcheck disabled",
+	"Show menu bar": "Show menu bar",
+	"Auto Detect": "Auto Detect"
 }

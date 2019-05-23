@@ -18,6 +18,7 @@
 	".md": ".md",
 	".txt": ".txt",
 	".html": ".html",
+	".pdf": ".pdf",
 	"Print": "인쇄",
 	"Your preferences for Boostnote": "Boostnote 설정",
 	"Storage Locations": "저장소",
@@ -75,7 +76,7 @@
 	"Website": "웹사이트",
 	"Development": "개발",
 	" : Development configurations for Boostnote.": " : Boostnote 개발을 위한 설정들.",
-	"Copyright (C) 2017 - 2018 BoostIO": "Copyright (C) 2017 - 2018 BoostIO",
+	"Copyright (C) 2017 - 2019 BoostIO": "Copyright (C) 2017 - 2019 BoostIO",
 	"License: GPL v3": "License: GPL v3",
 	"Analytics": "사용 통계/분석",
 	"Boostnote collects anonymous data for the sole purpose of improving the application, and strictly does not collect any personal information such the contents of your notes.": "Boostnote는 서비스개선을 위해 익명으로 데이터를 수집하며 노트의 내용과같은 일체의 개인정보는 수집하지 않습니다.",
@@ -160,6 +161,8 @@
 	"Allow dangerous html tags": "모든 위험한 태그 허용",
 	"Convert textual arrows to beautiful signs. ⚠ This will interfere with using HTML comments in your Markdown.": "Convert textual arrows to beautiful signs. ⚠ This will interfere with using HTML comments in your Markdown.",
 	"⚠ You have pasted a link referring an attachment that could not be found in the storage location of this note. Pasting links referring attachments is only supported if the source and destination location is the same storage. Please Drag&Drop the attachment instead! ⚠": "⚠ You have pasted a link referring an attachment that could not be found in the storage location of this note. Pasting links referring attachments is only supported if the source and destination location is the same storage. Please Drag&Drop the attachment instead! ⚠",
-	"Disabled": "Disabled",
-	"Default note sort": "노트 정렬 순서"
+	"Spellcheck disabled": "Spellcheck disabled",
+	"Show menu bar": "Show menu bar",
+  "Default note sort": "노트 정렬 순서",
+	"Auto Detect": "Auto Detect"
 }

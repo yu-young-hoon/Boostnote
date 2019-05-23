@@ -1,7 +1,7 @@
 {
   "name": "boost",
   "productName": "Boostnote",
-  "version": "0.11.12",
+   "version": "0.11.16",
   "main": "index.js",
   "description": "Boostnote",
   "license": "GPL-3.0",
@@ -31,7 +31,7 @@
     "storage",
     "electron"
   ],
-  "author": "Dick Choi <fluke8259@gmail.com> (https://github.com/Rokt33r)",
+  "author": "Junyoung Choi <fluke8259@gmail.com> (https://github.com/Rokt33r)",
   "contributors": [
     "Kazu Yokomizo (https://github.com/kazup01)",
     "dojineko (https://github.com/dojineko)",
@@ -41,7 +41,8 @@
     "Yoshihisa Mochihara (https://github.com/yosmoc)",
     "Mike Resoli (https://github.com/mikeres0)",
     "tjado (https://github.com/tejado)",
-    "Sota Sugiura (https://github.com/sota1235)"
+    "Sota Sugiura (https://github.com/sota1235)",
+    "Milo Todt (https://github.com/MiloTodt)"
   ],
   "bugs": {
     "url": "https://github.com/BoostIO/Boostnote/issues"
@@ -49,6 +50,7 @@
   "homepage": "https://boostnote.io",
   "dependencies": {
     "@enyaxu/markdown-it-anchor": "^5.0.2",
+    "@rokt33r/js-sequence-diagrams": "^2.0.6-2",
     "@rokt33r/markdown-it-math": "^4.0.1",
     "@rokt33r/season": "^5.3.0",
     "@susisu/mte-kernel": "^2.0.0",
@@ -71,7 +73,6 @@
     "iconv-lite": "^0.4.19",
     "immutable": "^3.8.1",
     "invert-color": "^2.0.0",
-    "js-sequence-diagrams": "^1000000.0.6",
     "js-yaml": "^3.12.0",
     "katex": "^0.9.0",
     "lodash": "^4.11.1",
@@ -137,7 +138,7 @@
     "devtron": "^1.1.0",
     "dom-storage": "^2.0.2",
     "electron": "3.0.8",
-    "electron-packager": "^12.0.0",
+    "electron-packager": "^12.2.0",
     "eslint": "^3.13.1",
     "eslint-config-standard": "^6.2.1",
     "eslint-config-standard-jsx": "^3.2.0",
@@ -153,6 +154,7 @@
     "jest-localstorage-mock": "^2.2.0",
     "jsdom": "^9.4.2",
     "json-loader": "^0.5.4",
+    "markdownlint": "^0.11.0",
     "merge-stream": "^1.0.0",
     "mock-require": "^3.0.1",
     "nib": "^1.1.0",
